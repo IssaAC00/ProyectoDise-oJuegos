@@ -11,9 +11,11 @@ public class PlayerController : MonoBehaviour
   private float xDirection;
   private bool canMove = false;
   private float throwSpeed = 10f;
-  // private bool canJump = true;
+  public Transform FirePoint;
+    public GameObject Bullet;
+    // private bool canJump = true;
 
-  [SerializeField] private LayerMask jumpGround;
+    [SerializeField] private LayerMask jumpGround;
   void Awake()
   {
     rb = GetComponent<Rigidbody2D>();
@@ -60,6 +62,11 @@ public class PlayerController : MonoBehaviour
     if (Input.GetButtonDown("Jump") && IsGrounded())
     {
       rb.velocity = new Vector2(xDirection * walkSpeed, jumpForce);
+    }
+    
+    if (Input.GetButtonDown("Fire1"))
+    {
+      Instantiate(Bullet, FirePoint.position, FirePoint.rotation);
     }
   }
 
