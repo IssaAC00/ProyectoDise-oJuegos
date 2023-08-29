@@ -18,7 +18,7 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MyRb.velocity = transform.right * Time.deltaTime * Speed;
+        MyRb.velocity = transform.right * Speed;
         Destroy(gameObject, 7f);
     }
 
