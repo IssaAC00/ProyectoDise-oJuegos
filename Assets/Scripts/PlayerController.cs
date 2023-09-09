@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
   private bool canMove = false;
   private float throwSpeed = 10f;
   public Transform FirePoint;
-    public GameObject Bullet;
-    // private bool canJump = true;
+  public GameObject Bullet;
+  // private bool canJump = true;
 
-    [SerializeField] private LayerMask jumpGround;
+  [SerializeField] private LayerMask jumpLayer;
   void Awake()
   {
     rb = GetComponent<Rigidbody2D>();
@@ -72,6 +72,6 @@ public class PlayerController : MonoBehaviour
 
   private bool IsGrounded()
   {
-    return Physics2D.BoxCast(bcol.bounds.center, bcol.bounds.size, 0f, Vector2.down, 0.1f, jumpGround);
+    return Physics2D.BoxCast(bcol.bounds.center, bcol.bounds.size, 0f, Vector2.down, 0.1f, jumpLayer);
   }
 }

@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 2121251383}
   Bullet: {fileID: 3045495553242823210, guid: 74d8639da94378c4199df7450c5c430b, type: 3}
-  jumpGround:
+  jumpLayer:
     serializedVersion: 2
     m_Bits: 8
 --- !u!50 &529047228
