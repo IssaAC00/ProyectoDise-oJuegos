@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Scrap
   - Wall
+  - Traps
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Terrain_FG
     uniqueID: 4110722679
+    locked: 0
+  - name: Spikes
+    uniqueID: 2983311075
     locked: 0

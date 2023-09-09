@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
   private Rigidbody2D rb;
   private BoxCollider2D bcol;
-  private float walkSpeed = 5f;
-  private float jumpForce = 6f;
+  private float walkSpeed = 8f;
+  private float jumpForce = 13f;
   private float xDirection;
   private bool canMove = false;
   private float throwSpeed = 10f;
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     if (Input.GetButtonDown("Jump") && IsGrounded())
     {
-      rb.velocity = new Vector2(xDirection * walkSpeed, jumpForce);
+      rb.velocity = new Vector2(xDirection, jumpForce);
     }
     
     if (Input.GetButtonDown("Fire1"))
