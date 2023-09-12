@@ -6,16 +6,16 @@ public class PlayerController : MonoBehaviour
 {
   private Rigidbody2D rb;
   private BoxCollider2D bcol;
-  private float walkSpeed = 5f;
-  private float jumpForce = 6f;
+  private float walkSpeed = 8f;
+  private float jumpForce = 13f;
   private float xDirection;
   private bool canMove = false;
   private float throwSpeed = 10f;
   public Transform FirePoint;
-    public GameObject Bullet;
-    // private bool canJump = true;
+  public GameObject Bullet;
+  // private bool canJump = true;
 
-    [SerializeField] private LayerMask jumpGround;
+  [SerializeField] private LayerMask jumpLayer;
   void Awake()
   {
     rb = GetComponent<Rigidbody2D>();
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     if (Input.GetButtonDown("Jump") && IsGrounded())
     {
-      rb.velocity = new Vector2(xDirection * walkSpeed, jumpForce);
+      rb.velocity = new Vector2(xDirection, jumpForce);
     }
     
     if (Input.GetButtonDown("Fire1"))
@@ -72,6 +72,6 @@ public class PlayerController : MonoBehaviour
 
   private bool IsGrounded()
   {
-    return Physics2D.BoxCast(bcol.bounds.center, bcol.bounds.size, 0f, Vector2.down, 0.1f, jumpGround);
+    return Physics2D.BoxCast(bcol.bounds.center, bcol.bounds.size, 0f, Vector2.down, 0.1f, jumpLayer);
   }
 }
