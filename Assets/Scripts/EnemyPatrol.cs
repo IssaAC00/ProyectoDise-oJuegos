@@ -42,7 +42,7 @@ public class EnemyPatrol2D : MonoBehaviour
 
     private void ChangeDirectionRandomly()
     {
-        moveDirection = Random.Range(0, 2) == 0 ? -1 : 1;
+        moveDirection = Random.Range(0, changeDirectionInterval) == 0 ? -1 : 1;
     }
 
 
@@ -55,7 +55,7 @@ public class EnemyPatrol2D : MonoBehaviour
 
             if (playerHealth != null)
             {
-                // Causa daño al jugador.
+                // Causa daï¿½o al jugador.
                 playerHealth.TakeDamage(damageAmount);
             }
         }

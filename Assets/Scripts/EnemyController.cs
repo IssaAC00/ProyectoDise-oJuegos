@@ -6,17 +6,17 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject platformPrefab; 
     private int bulletHits = 0; 
-    private bool isDestroyed = false; 
+    private bool isAlive = true; 
     public void BulletHit()
     {
-        if (!isDestroyed)
+        if (isAlive)
         {
             bulletHits++; 
             if (bulletHits >= 3)
             {
                 GeneratePlatform(); 
                 Destroy(gameObject); 
-                isDestroyed = true; 
+                isAlive = false; 
             }
         }
     }
