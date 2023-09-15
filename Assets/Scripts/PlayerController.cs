@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
       {
         Transform child = transform.GetChild(i);
         // Debug.Log("Child name: " + child.name);
-        if (child.name.Equals("Scrap"))
+        if (child.name.Equals("Platform"))
         {
           Vector3 mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
           mpos.z = 0;
