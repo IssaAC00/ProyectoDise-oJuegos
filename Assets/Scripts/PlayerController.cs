@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
   {
     xDirection = Input.GetAxisRaw("Horizontal");
 
+    // Movimiento del personaje
     if (canMove)
     {
       rb.velocity = new Vector2(xDirection * walkSpeed, rb.velocity.y);
@@ -73,5 +74,14 @@ public class PlayerController : MonoBehaviour
   private bool IsGrounded()
   {
     return Physics2D.BoxCast(bcol.bounds.center, bcol.bounds.size, 0f, Vector2.down, 0.1f, jumpLayer);
+  }
+
+  public void SetMoveState(bool state)
+  {
+    if(!state)
+    {
+      canMove = state;
+      rb.velocity = new Vector2(0, 0);
+    }
   }
 }
