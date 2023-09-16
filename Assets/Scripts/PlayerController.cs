@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
   private float xDirection;
   private bool canMove = false;
   private float throwSpeed = 10f;
+  private PlayerAudioManager pam;
   public Transform FirePoint;
   public GameObject Bullet;
   // private bool canJump = true;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
   {
     rb = GetComponent<Rigidbody2D>();
     bcol = GetComponent<BoxCollider2D>();
+    pam = FindObjectOfType<PlayerAudioManager>();
     canMove = true;
   }
 
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour
     // shootComponent
     if (Input.GetButtonDown("Fire1"))
     {
+      // Revisa los hijos del GameObject para ver si tiene una
+      // plataforma asociada.
       for (int i = 0; i < transform.childCount; i++)
       {
         Transform child = transform.GetChild(i);
@@ -57,11 +61,14 @@ public class PlayerController : MonoBehaviour
 
         }
       }
+      // Reproduce el sonido de disparo
+      pam.PlayShootSound();
     }
     
 
     if (Input.GetButtonDown("Jump") && IsGrounded())
     {
+      pam.PlayJumpSound();
       rb.velocity = new Vector2(xDirection, jumpForce);
     }
     
