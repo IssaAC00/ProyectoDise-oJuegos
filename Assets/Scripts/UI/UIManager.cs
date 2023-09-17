@@ -1,14 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+
+    [SerializeField] private AudioSource bgmSource;
+
     [Header("Game Over")]
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private AudioClip gameOverSound;
 
     [Header("Pause")]
     [SerializeField] private GameObject pauseScreen;
+
+    [Header("Collectibles")]
+    [SerializeField] private Text collectCounter;
+    [SerializeField] private CollectibleController collectController; 
 
 
     private void Awake()
@@ -30,11 +38,14 @@ public class UIManager : MonoBehaviour
                     PauseGame(true);
             }
         }
+        // Update the collectible counter
+        collectCounter.text = ":" + collectController.collectibleCount.ToString();
     }
 
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
+        //bgmSource.clip = gameOverSound;
     }
 
     public void Restart()
@@ -51,8 +62,14 @@ public class UIManager : MonoBehaviour
     {
         pauseScreen.SetActive(status);
         if (status)
+        {
             Time.timeScale = 0;
+            bgmSource.volume = 0.05f;
+        }
         else
+        {
             Time.timeScale = 1;
+            bgmSource.volume = 0.16f;
+        }  
     }
 }
