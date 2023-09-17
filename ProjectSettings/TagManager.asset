@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Background
   - ground
+  - Collectible
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - ground
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: Foreground_Terrain
     uniqueID: 3792540261
+    locked: 0
+  - name: UI
+    uniqueID: 4165124731
     locked: 0

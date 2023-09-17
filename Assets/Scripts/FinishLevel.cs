@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class FinishLevel : MonoBehaviour
 {
   private AudioSource finishSound;
-  [SerializeField] private bool completo = true;
+  [SerializeField] private CollectibleController collectController;
+  [SerializeField] private int collectiblesRequired;
   private bool levelComplete = false;
   private void Awake()
   {
@@ -18,7 +19,7 @@ public class FinishLevel : MonoBehaviour
   {
     if(collision.gameObject.name == "Player" && !levelComplete)
     {
-      if(completo) // CONDICIONAL PARA GANAR NIVEL
+      if(collectController.collectibleCount == collectiblesRequired) // CONDICIONAL PARA GANAR NIVEL
       {
         finishSound.Play();
         levelComplete = true;
