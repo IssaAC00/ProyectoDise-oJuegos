@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Background
   - ground
+  - Collectible
   layers:
   - Default
   - TransparentFX

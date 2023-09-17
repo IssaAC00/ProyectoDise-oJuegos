@@ -13,20 +13,21 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-        transform.right = mousePos - transform.position; // Orienta la bala hacia la posición del mouse.
+        transform.right = mousePos - transform.position; // Orienta la bala hacia la posiciï¿½n del mouse.
         rb.velocity = transform.right * Speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Agrega cualquier lógica adicional aquí si es necesario.
+        // Agrega cualquier lï¿½gica adicional aquï¿½ si es necesario.
     }
 
     // Detectar colisiones
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        if(collision.gameObject.tag != "Player")
+            Destroy(gameObject);
     }
 }
 
