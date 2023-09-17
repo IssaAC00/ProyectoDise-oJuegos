@@ -65746,7 +65746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2096f0eb6dab841acb3cb804efc942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completo: 1
+  collectController: {fileID: 2122453452}
+  collectiblesRequired: 5
 --- !u!82 &1360874272
 AudioSource:
   m_ObjectHideFlags: 0
