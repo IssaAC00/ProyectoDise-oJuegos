@@ -45,19 +45,11 @@ public class EnemyPatrol2D : MonoBehaviour
         moveDirection = Random.Range(0, changeDirectionInterval) == 0 ? -1 : 1;
     }
 
-
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.tag == "Player")
         {
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-            if (playerHealth != null)
-            {
-                // Causa da�o al jugador.
-                playerHealth.TakeDamage(damageAmount);
-            }
+            collision.GetComponent<Health>().TakeDamage(damageAmount);
         }
-    }*/
+    }
 }
