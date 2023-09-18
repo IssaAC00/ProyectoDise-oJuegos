@@ -51,5 +51,9 @@ public class EnemyPatrol2D : MonoBehaviour
         {
             collision.GetComponent<Health>().TakeDamage(damageAmount);
         }
+        if (collision.tag == "Bullet")
+        {
+            GetComponent<EnemyController>().BulletHit();
+        }
     }
 }

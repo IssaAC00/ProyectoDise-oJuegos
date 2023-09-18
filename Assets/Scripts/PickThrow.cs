@@ -18,7 +18,7 @@ public class PickThrow : MonoBehaviour
       }
     }
     
-    if (Input.GetButtonDown("Fire1") && scrapObj != null)
+    if (Input.GetButtonDown("Fire2") && scrapObj != null)
     {
       scrapObj = null;
     }
@@ -26,7 +26,7 @@ public class PickThrow : MonoBehaviour
 
   void DetectAndPickUp()
   {
-    Collider2D[] nearColiders = Physics2D.OverlapCircleAll(transform.position, 0.8f);
+    Collider2D[] nearColiders = Physics2D.OverlapCircleAll(transform.position, 1f);
     foreach (Collider2D collider in nearColiders)
     {
       if (collider.CompareTag("Scrap") && collider.gameObject.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
