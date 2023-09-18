@@ -7,12 +7,24 @@ using UnityEngine.SceneManagement;
 public class FinishLevel : MonoBehaviour
 {
   private AudioSource finishSound;
+  private Animator animator;
   [SerializeField] private CollectibleController collectController;
   [SerializeField] private int collectiblesRequired;
   private bool levelComplete = false;
+  private GameObject bgMusic;
   private void Awake()
   {
+    bgMusic = GameObject.Find("BG_Music");
+    animator = GetComponent<Animator>();
     finishSound = GetComponent<AudioSource>();
+  }
+  
+  private void Update()
+  {
+    if(collectController.collectibleCount == collectiblesRequired)
+    {
+      animator.SetBool("open", true);
+    }
   }
   
   private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +33,7 @@ public class FinishLevel : MonoBehaviour
     {
       if(collectController.collectibleCount == collectiblesRequired) // CONDICIONAL PARA GANAR NIVEL
       {
+        Destroy(bgMusic);
         finishSound.Play();
         levelComplete = true;
         PlayerController movement = collision.gameObject.GetComponent<PlayerController>();
