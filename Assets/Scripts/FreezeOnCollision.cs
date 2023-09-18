@@ -33,6 +33,7 @@ public class FreezeOnCollision : MonoBehaviour
       rb.velocity = Vector2.zero;
       rb.bodyType = RigidbodyType2D.Static;
       gameObject.layer = 3;
+      rb.excludeLayers = 0;
     }
     
   }

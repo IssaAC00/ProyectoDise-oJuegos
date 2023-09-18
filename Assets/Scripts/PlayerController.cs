@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
   private float jumpForce = 13f;
   private float xDirection;
   private bool canMove = false;
-  private float throwSpeed = 10f;
+  private float throwSpeed = 20f;
   private PlayerAudioManager pam;
   public Transform FirePoint;
   public GameObject Bullet;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     
     // shootComponent
-    if (Input.GetButtonDown("Fire1"))
+    if (Input.GetButtonDown("Fire2"))
     {
       // Revisa los hijos del GameObject para ver si tiene una
       // plataforma asociada.
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
       {
         Transform child = transform.GetChild(i);
         // Debug.Log("Child name: " + child.name);
-        if (child.name.Equals("Platform"))
+        if (child.tag.Equals("Scrap"))
         {
           Vector3 mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
           mpos.z = 0;
@@ -61,8 +61,6 @@ public class PlayerController : MonoBehaviour
 
         }
       }
-      // Reproduce el sonido de disparo
-      pam.PlayShootSound();
     }
     
 
@@ -74,6 +72,8 @@ public class PlayerController : MonoBehaviour
     
     if (Input.GetButtonDown("Fire1"))
     {
+      // Reproduce el sonido de disparo
+      pam.PlayShootSound();
       Instantiate(Bullet, FirePoint.position, FirePoint.rotation);
     }
   }

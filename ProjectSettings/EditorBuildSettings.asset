@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CrystalLevel.unity
     guid: 89fe36403d784cc42b693b10ee81b5b3
   - enabled: 1
+    path: Assets/Scenes/CrystalLevel_Health.unity
+    guid: 730d2dcb7b75f7d4a95e1394faadd232
+  - enabled: 1
     path: Assets/Scenes/FinalScene.unity
     guid: 05c4532c8d4fc1e469a7902a66c5c82d
   m_configObjects: {}

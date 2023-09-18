@@ -9,6 +9,7 @@ TagManager:
   - Background
   - ground
   - Collectible
+  - Bullet
   layers:
   - Default
   - TransparentFX
