@@ -10,13 +10,14 @@ public class EnemyPatrol2D : MonoBehaviour
     private float initialPositionX; 
     private int moveDirection = 1; 
     private float timeSinceDirectionChange = 0f; 
-    public int damageAmount = 10; 
-
+    public int damageAmount = 10;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         initialPositionX = transform.position.x; 
-        timeSinceDirectionChange = Random.Range(0f, changeDirectionInterval); 
+        timeSinceDirectionChange = Random.Range(0f, changeDirectionInterval);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -33,7 +34,16 @@ public class EnemyPatrol2D : MonoBehaviour
         {
             ChangeDirection();
         }
-    }
+        if (moveDirection > 0 && spriteRenderer.flipX)
+        {
+            spriteRenderer.flipX = false; 
+        }
+        else if (moveDirection < 0 && !spriteRenderer.flipX)
+        {
+            spriteRenderer.flipX = true; 
+        }
+
+}
 
     private void ChangeDirection()
     {
