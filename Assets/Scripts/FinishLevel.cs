@@ -10,8 +10,10 @@ public class FinishLevel : MonoBehaviour
   [SerializeField] private CollectibleController collectController;
   [SerializeField] private int collectiblesRequired;
   private bool levelComplete = false;
+  private GameObject bgMusic;
   private void Awake()
   {
+    bgMusic = GameObject.Find("BG_Music");
     finishSound = GetComponent<AudioSource>();
   }
   
@@ -21,6 +23,7 @@ public class FinishLevel : MonoBehaviour
     {
       if(collectController.collectibleCount == collectiblesRequired) // CONDICIONAL PARA GANAR NIVEL
       {
+        Destroy(bgMusic);
         finishSound.Play();
         levelComplete = true;
         PlayerController movement = collision.gameObject.GetComponent<PlayerController>();

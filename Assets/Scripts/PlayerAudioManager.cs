@@ -9,6 +9,8 @@ public class PlayerAudioManager : MonoBehaviour
 
   [SerializeField]
   private AudioClip shootSound;
+  [SerializeField]
+  private AudioClip collectSound;
 
   private AudioSource audioSource;
   private void Awake()
@@ -24,5 +26,10 @@ public class PlayerAudioManager : MonoBehaviour
   public void PlayShootSound()
   {
     audioSource.PlayOneShot(shootSound);
+  }
+
+  public void PlayCollectSound()
+  {
+    audioSource.PlayOneShot(collectSound);
   }
 }
