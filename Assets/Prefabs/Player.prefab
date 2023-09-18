@@ -394,3 +394,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSound: {fileID: 8300000, guid: a40dc72c1855d0c4e93d2876899606e8, type: 3}
   shootSound: {fileID: 8300000, guid: 5b50d92133d591d459e99dc49b86eebb, type: 3}
+  collectSound: {fileID: 8300000, guid: e3ae43d11ea9779468d97671178df729, type: 3}
