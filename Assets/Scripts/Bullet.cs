@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -29,8 +30,11 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag != "Player")
             Destroy(gameObject);
+        if(collision.gameObject.tag != "Breakwall")
+            Destroy(gameObject);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             Destroy(gameObject);
+       
 
     }
         

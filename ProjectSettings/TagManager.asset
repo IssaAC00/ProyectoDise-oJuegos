@@ -10,6 +10,7 @@ TagManager:
   - ground
   - Collectible
   - Bullet
+  - Breakwall
   layers:
   - Default
   - TransparentFX
