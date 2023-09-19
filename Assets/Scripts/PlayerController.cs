@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
   private Rigidbody2D rb;
   private BoxCollider2D bcol;
+  private SpriteRenderer spriteRenderer;
   private float walkSpeed = 8f;
   private float jumpForce = 13f;
   private float xDirection;
@@ -15,12 +16,14 @@ public class PlayerController : MonoBehaviour
   public Transform FirePoint;
   public GameObject Bullet;
   // private bool canJump = true;
+  [SerializeField] private Animator animator;
 
   [SerializeField] private LayerMask jumpLayer;
   void Awake()
   {
     rb = GetComponent<Rigidbody2D>();
     bcol = GetComponent<BoxCollider2D>();
+    spriteRenderer = GetComponent<SpriteRenderer>();
     pam = FindObjectOfType<PlayerAudioManager>();
     canMove = true;
   }
@@ -28,15 +31,30 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    xDirection = Input.GetAxisRaw("Horizontal");
+    if (!canMove)
+      return; // Desactiva todos los controles cuando se pasa el nivel, pausa o muere
 
     // Movimiento del personaje
-    if (canMove)
+    xDirection = Input.GetAxisRaw("Horizontal");
+    rb.velocity = new Vector2(xDirection * walkSpeed, rb.velocity.y);
+
+    // Animaciones
+    if (xDirection != 0)
+      animator.SetBool("playerMove", true);
+    else
+      animator.SetBool("playerMove", false);
+
+    animator.SetBool("playerJumps", !IsGrounded());
+    // Voltear personaje
+    if (xDirection > 0 && spriteRenderer.flipX)
     {
-      rb.velocity = new Vector2(xDirection * walkSpeed, rb.velocity.y);
+      spriteRenderer.flipX = false;
+    }
+    else if (xDirection < 0 && !spriteRenderer.flipX)
+    {
+      spriteRenderer.flipX = true;
     }
 
-    
     // shootComponent
     if (Input.GetButtonDown("Fire2"))
     {
@@ -62,14 +80,13 @@ public class PlayerController : MonoBehaviour
         }
       }
     }
-    
 
     if (Input.GetButtonDown("Jump") && IsGrounded())
     {
       pam.PlayJumpSound();
       rb.velocity = new Vector2(xDirection, jumpForce);
     }
-    
+
     if (Input.GetButtonDown("Fire1"))
     {
       // Reproduce el sonido de disparo
@@ -85,10 +102,13 @@ public class PlayerController : MonoBehaviour
 
   public void SetMoveState(bool state)
   {
-    if(!state)
-    {
-      canMove = state;
+    canMove = state;
+    if (!state)
       rb.velocity = new Vector2(0, 0);
-    }
+  }
+
+  public void ToggleMoveState()
+  {
+    canMove = !canMove;
   }
 }

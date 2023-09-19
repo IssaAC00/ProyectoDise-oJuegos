@@ -37,12 +37,10 @@ public class EnemyPatrol2D : MonoBehaviour
         if (moveDirection > 0 && spriteRenderer.flipX)
         {
             spriteRenderer.flipX = false; 
-            FlipCollider();
         }
         else if (moveDirection < 0 && !spriteRenderer.flipX)
         {
             spriteRenderer.flipX = true;
-            FlipCollider();
         }
 
 }
@@ -55,12 +53,6 @@ public class EnemyPatrol2D : MonoBehaviour
     private void ChangeDirectionRandomly()
     {
         moveDirection = Random.Range(0, changeDirectionInterval) == 0 ? -1 : 1;
-    }
-
-    private void FlipCollider()
-    {
-        BoxCollider2D coll = GetComponent<BoxCollider2D>();
-        coll.offset = Vector2.Scale(coll.offset, new Vector2(-1,1));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
