@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
   private float walkSpeed = 8f;
   private float jumpForce = 13f;
   private float xDirection;
-  private bool canMove = false;
+  public bool canMove = false;
   private float throwSpeed = 20f;
   private PlayerAudioManager pam;
   public Transform FirePoint;

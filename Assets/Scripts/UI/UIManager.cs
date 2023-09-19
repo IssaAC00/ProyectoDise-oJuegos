@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
 
     [SerializeField] private AudioSource bgmSource;
+    private PlayerController playerCont;
 
     [Header("Game Over")]
     [SerializeField] private GameObject gameOverScreen;
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
     {
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
+        playerCont = FindObjectOfType<PlayerController>();
     }
 
     private void Update()
@@ -45,6 +47,7 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
+        playerCont.ToggleMoveState();
         //bgmSource.clip = gameOverSound;
     }
 
@@ -67,11 +70,13 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 0;
             bgmSource.volume = 0.05f;
+            playerCont.ToggleMoveState();
         }
         else
         {
             Time.timeScale = 1;
             bgmSource.volume = 0.16f;
+            playerCont.ToggleMoveState();
         }  
     }
 }

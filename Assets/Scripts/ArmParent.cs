@@ -7,10 +7,20 @@ public class ArmParent : MonoBehaviour
 {
     public Vector2 PointerPosition { get; set; }
     private bool isFlipped;
+    private PlayerController playerCont;
+
+    private void Awake()
+    {
+        playerCont = FindObjectOfType<PlayerController>();
+    }
 
     // Update is called once per frame
     void Update()
     {
+        // Check if player can move
+        if(!playerCont.canMove)
+            return;
+
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = -10f;
         Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
